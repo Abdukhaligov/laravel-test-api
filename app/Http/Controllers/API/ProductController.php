@@ -13,7 +13,7 @@ class ProductController extends Controller
     }
 
     public function index(){
-        return Product::all();
+        return Product::orderBy('created_at', 'DESC')->get();
     }
 
 
@@ -55,10 +55,14 @@ class ProductController extends Controller
     public function update(Request $request){
 
         $product = Product::find($request->id);
+        $product->name = $request->name;
         $product->category = $request->category;
+        $product->price = $request->price;
 
         if($product->save()){
             return response()->json(['result' => "success", "msg" => "Data is updated"]);
+        }else{
+            return response()->json(['result' => "fail", "msg" => "something gets wrong"]);
         }
     }
 
