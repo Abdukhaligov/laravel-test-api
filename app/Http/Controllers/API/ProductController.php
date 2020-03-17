@@ -23,6 +23,7 @@ class ProductController extends Controller
            'category' => 'required',
            'price' => 'required'
         ]);
+
         if($valid->fails()){
             return response()->json(['error'=>$valid->errors()],401);
         }

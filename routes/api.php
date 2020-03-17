@@ -35,5 +35,4 @@ Route::group(['middleware' => ['auth:api']], function(){
     Route::put('products/update', 'API\ProductController@update');
 
 
-
 });
